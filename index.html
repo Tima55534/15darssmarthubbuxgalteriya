@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xodimning vaqtincha mehnatga layoqatsizlik nafaqasini hisoblash</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #D2FF28;
+            --tech-green: #D2FF28;
+            --dark-bg: #1a1a1a;
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(210, 255, 40, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(210, 255, 40, 0.05) 0%, transparent 40%);
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .slides-container {
+                width: 960px;
+                height: 1080px;
+                max-height: 95vh;
+                aspect-ratio: 960 / 1080;
+                border: 2px solid rgba(210, 255, 40, 0.3);
+                border-radius: 20px;
+                box-shadow: 0 0 100px rgba(0, 0, 0, 0.8), 0 0 30px rgba(210, 255, 40, 0.1);
+                margin: auto;
+                position: relative;
+                overflow: hidden;
+            }
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: var(--primary-green);
+            margin: 0;
+            padding: 0;
+        }
+
+        .highlight {
+            color: var(--primary-green);
+            font-weight: 800;
+        }
+
+        .glass-box {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(210, 255, 40, 0.2);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .section-header {
+            font-size: 4rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+
+        .topic-subheader {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .plan-list {
+            list-style: none;
+            padding: 0;
+            font-size: 1.4rem;
+        }
+
+        .plan-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .plan-list li::before {
+            content: "➜";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+        }
+
+        .calc-step {
+            background: rgba(210, 255, 40, 0.05);
+            border-left: 5px solid var(--primary-green);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        .table-premium {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .table-premium th,
+        .table-premium td {
+            border: 1px solid rgba(210, 255, 40, 0.2);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table-premium th {
+            background: rgba(210, 255, 40, 0.1);
+            color: var(--primary-green);
+        }
+
+        .status-badge {
+            background: var(--primary-green);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slides-container">
+        <!-- Slide 1: Intro -->
+        <div class="slide active" id="slide-1">
+            <div class="bg-shape bg-shape-1"></div>
+            <div class="section-header">2-BO'LIM</div>
+            <h1 class="topic-subheader">KADRLAR VA ISH HAQQI HISOBI</h1>
+            <div
+                style="height: 3px; width: 60px; background: var(--primary-green); margin: 25px auto; border-radius: 10px;">
+            </div>
+            <div style="font-size: 1.6rem; text-align: center;">
+                <span class="highlight">15-Dars</span><br>
+                <div style="margin-top: 15px; font-size: 2rem; color: #ffffff; font-weight: 700; max-width: 800px;">
+                    Xodimning bolnichniy pullarini hisoblash va soliq oqibatlari
+                </div>
+            </div>
+            <div class="bg-shape bg-shape-2"></div>
+        </div>
+
+        <!-- Slide 2: Vaqtincha mehnatga layoqatsizlik nafaqasi nima? -->
+        <div class="slide" id="slide-2">
+            <h2>Bolnichniy nafaqasi tushunchasi</h2>
+            <div class="glass-box" style="margin-top: 20px;">
+                <p style="font-size: 1.3rem; line-height: 1.6;">
+                    <strong class="highlight">Vaqtincha mehnatga layoqatsizlik nafaqasi</strong> — bu xodim kasalligi,
+                    jarohati yoki oila a'zosi parvarishi sababli ishga chiqolmaganda beriladigan to'lov.
+                </p>
+                <ul class="plan-list" style="margin-top: 20px;">
+                    <li><strong>Mehnat Kodeksi 436-437 moddalar:</strong> Davlat ijtimoiy sug'urtasi bo'yicha nafaqalar
+                        olish huquqi.</li>
+                    <li><strong>Asos:</strong> Tibbiyot muassasasi tomonidan elektron yuritiladigan mehnatga
+                        layoqatsizlik varaqasi.</li>
+                    <li><strong>To'lov:</strong> Ish beruvchi tomonidan ish haqi to'lashning belgilangan muddatlarida
+                        to'lanadi.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 3: Nafaka miqdorlari (Stajga qarab) -->
+        <div class="slide" id="slide-3">
+            <h2>Nafaqa miqdori</h2>
+            <div class="glass-box">
+                <table class="table-premium">
+                    <thead>
+                        <tr>
+                            <th>Umumiy mehnat staji</th>
+                            <th>Nafaqa miqdori (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8 yil va undan ortiq</td>
+                            <td class="highlight">100%</td>
+                        </tr>
+                        <tr>
+                            <td>5 yildan 8 yilgacha</td>
+                            <td class="highlight">80%</td>
+                        </tr>
+                        <tr>
+                            <td>5 yilgacha</td>
+                            <td class="highlight">60%</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div
+                    style="margin-top: 20px; padding: 15px; background: rgba(210, 255, 40, 0.05); border-radius: 10px; border: 1px solid rgba(210, 255, 40, 0.2);">
+                    <strong class="highlight">MK 437-modda imtiyozlari:</strong> Urush qatnashchilari, AES avariyasi
+                    ishtirokchilari va 16 yoshga to'lmagan 3 tadan ortiq bolali xodimlarga stajdan qat'i nazar <span
+                        class="highlight">100%</span> to'lanadi.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Soliq Kodeksi (Soliq Oqibatlari) -->
+        <div class="slide" id="slide-4">
+            <h2>Soliq oqibatlari (Soliq Kodeksi)</h2>
+            <div class="glass-box">
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">Vaqtincha mehnatga layoqatsizlik nafaqalari — bu
+                    <strong class="highlight">Boshqa daromadlar</strong> turkumiga kiradi <span class="highlight">(SK
+                        377-modda)</span>.
+                </p>
+                <table class="table-premium">
+                    <thead>
+                        <tr>
+                            <th>Soliq turi</th>
+                            <th>Stavka</th>
+                            <th>Holat / Asos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JShDS (Daromad solig'i)</td>
+                            <td class="highlight">12%</td>
+                            <td>✅ Ushlanadi (SK 387-modda)</td>
+                        </tr>
+                        <tr>
+                            <td>Ijtimoiy soliq</td>
+                            <td class="highlight">0%</td>
+                            <td>❌ Hisoblanmaydi (SK 404-modda)</td>
+                        </tr>
+                        <tr>
+                            <td>INPS</td>
+                            <td class="highlight">0%</td>
+                            <td>❌ Ushlanmaydi (Mehnat daromadi emas)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 20px; font-style: italic; color: #ffbbbb;">
+                    * Ijtimoiy soliq faqat mehnatga haq to'lash tarzidagi daromadlardan olinadi (SK 403-modda).
+                    Bolnichniy bunga kirmaydi.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Nafaka hisoblash -->
+        <div class="slide" id="slide-5">
+            <div class="status-badge">AMALIY HISOB-KITOB</div>
+            <h2>Nafaqa hisoblash</h2>
+            <div class="glass-box">
+                <p><strong>Holat:</strong> Xodim oylik ish haqi 5,000,000 so'm. Staji 6 yil (80%). Kasallik oyi - Mart
+                    2026 (22 ish kuni bor). Xodim 5 ish kuni kasal bo'ldi.</p>
+                <div class="calc-step">
+                    <strong>1. Kunlik ish haqini aniqlash:</strong><br>
+                    Oylik ÷ Kasal bo'lgan oydagi ish kunlari<br>
+                    5,000,000 ÷ 22 = <span class="highlight">227,273 so'm</span>
+                </div>
+                <div class="calc-step">
+                    <strong>2. Kunlik nafaqa miqdori (80%):</strong><br>
+                    227,273 × 80% = <span class="highlight">181,818 so'm</span>
+                </div>
+                <div class="calc-step">
+                    <strong>3. Jami hisoblangan nafaqa:</strong><br>
+                    181,818 × 5 (ish kuni) = <span class="highlight">909,090 so'm</span>
+                </div>
+                <div class="calc-step">
+                    <strong>4. Qo'lga tegadigan summa (JShDS 12%):</strong><br>
+                    909,090 - (909,090 × 12%) = <span class="highlight">799,999 so'm</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Darsdan olingan natijalar -->
+        <div class="slide" id="slide-6">
+            <h2>Darsdan olingan natijalar</h2>
+            <div class="glass-box">
+                <ul class="plan-list">
+                    <li>✅ Nafaqa miqdori stajga (60%, 80%, 100%) bog'liqligini (VM 1136) tushundik.</li>
+                    <li>✅ Kunlik ish haqi 25.3 emas, balki <strong class="highlight">o'sha oydagi ish kunlariga</strong>
+                        qarab hisoblanishini o'rgandik.</li>
+                    <li>✅ Nafaqadan faqat JShDS ushlanishini, Ijtimoiy soliq va INPS yo'qligini bildik (SK 377, 404).
+                    </li>
+                    <li>✅ MK 436-437 moddalar bo'yicha huquqiy asoslarni tahlil qildik.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Yakun -->
+        <div class="slide" id="slide-7">
+            <div class="bg-shape bg-shape-1" style="animation: pulse 3s infinite;"></div>
+            <div class="bg-shape bg-shape-2" style="animation: pulse 3s infinite reverse;"></div>
+            <h1 style="text-align: center; line-height: 1.2;">
+                O'SISH DAN<br>
+                <span
+                    style="color: var(--primary-green); -webkit-text-fill-color: var(--primary-green);">TO'XTAMANG!</span>
+                🚀
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--primary-green); margin-top: 20px; opacity: 0.6;">DARS TUGADI</p>
+            <canvas id="fireworks"
+                style="position: absolute; top:0; left:0; width:100%; height:100%; z-index:-1; pointer-events:none;"></canvas>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="controls">
+        <div class="control-btn" onclick="prevSlide()">❮</div>
+        <div class="control-btn" onclick="nextSlide()">❯</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
